@@ -1,6 +1,6 @@
 -module(cal).
 
--import(logics, [add/2, sub/2, mul/2, divide/2, mod/2, factorial/1, exponent/2, sqr_root/1]).
+-import(logics, [add/2, sub/2, mul/2, divide/2, mod/2, factorial/1, exponent/2, sqr_root/1, log/2]).
 
 -export([calculate/2, calculate/3]).
 
@@ -18,6 +18,8 @@ calculate(Opp, X, Y) ->
             mod(X, Y);
         Opp == "^" ->
             exponent(X, Y);
+        Opp == "log" ->
+            log(X, Y);
         true ->
             {error, "Invalid operator"}
     end.

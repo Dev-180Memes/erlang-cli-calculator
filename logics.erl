@@ -1,5 +1,5 @@
 -module(logics).
--export([add/2, sub/2, mul/2, divide/2, mod/2, factorial/1, exponent/2, sqr_root/1]).
+-export([add/2, sub/2, mul/2, divide/2, mod/2, factorial/1, exponent/2, sqr_root/1, log/2]).
 
 add(X, Y) ->
     X + Y.
@@ -40,4 +40,15 @@ calculate_sqr_root(X, Y) ->
             Guess;
         true ->
             calculate_sqr_root(X, Guess)
+    end.
+
+log(X, Y) when X > 0, Y > 0 ->
+    calculate_log(X, Y, 0).
+
+calculate_log(X, Y, N) ->
+    if
+        X < Y ->
+            N;
+        true ->
+            calculate_log(X / Y, Y, N + 1)
     end.
